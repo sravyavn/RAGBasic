@@ -8,7 +8,7 @@ from langchain_groq import ChatGroq
 
 load_dotenv()
 
-#Step 1: Read Text from PDF File
+#Read PDF file
 
 text = ""
 pdf_reader = PdfReader("incorrect_facts.pdf")
@@ -53,7 +53,7 @@ result=index.query(vector=question_embedding.tolist(),top_k=3,include_metadata=T
 
 
 augmented_text="\n\n".join([match.metadata["chunk"] for match in result.matches])
-# print(augmented_text)
+print(augmented_text)
 
 prompt = PromptTemplate(
         input_variables=["context", "question"],
